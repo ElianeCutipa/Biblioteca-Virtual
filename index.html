@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Pantalla de Login -->
+        <div id="loginScreen" class="screen active">
+            <h1>🏛️ Biblioteca Virtual</h1>
+            <div class="login-form">
+                <h2>Iniciar Sesión</h2>
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" placeholder="admin o user1">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" placeholder="123456">
+                </div>
+                <button class="btn" onclick="login()">Iniciar Sesión</button>
+                <div style="margin-top: 15px; padding: 15px; background: #e6fffa; border-radius: 8px;">
+                    <strong>Usuarios de prueba:</strong><br>
+                    🔹 Admin: admin / 123456<br>
+                    🔹 Usuario: user1 / 123456
+                </div>
+            </div>
+        </div>
+
+        <!-- Navbar -->
+        <div id="navbar" class="navbar" style="display: none;">
+            <div class="nav-title">📚 Biblioteca Virtual</div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="showScreen('searchScreen')">🔍 Buscar</button>
+                <button class="btn btn-secondary" onclick="showScreen('returnScreen')">📤 Devoluciones</button>
+                <button class="btn btn-secondary" id="adminBtn" onclick="showScreen('adminScreen')" style="display: none;">⚙️ Admin</button>
+                <button class="btn btn-danger" onclick="logout()">🚪 Salir</button>
+            </div>
+        </div>
+
+        <!-- Pantalla de Búsqueda -->
+        <div id="searchScreen" class="screen">
+            <h2>🔍 Buscar Documentos</h2>
+            <div class="search-container">
+                <div class="form-group">
+                    <label>Título:</label>
+                    <input type="text" id="searchTitle" placeholder="Buscar por título">
+                </div>
+                <div class="form-group">
+                    <label>Autor:</label>
+                    <input type="text" id="searchAuthor" placeholder="Buscar por autor">
+                </div>
+                <div class="form-group">
+                    <label>Año:</label>
+                    <input type="number" id="searchYear" placeholder="Año de publicación">
+                </div>
+                <div class="form-group">
+                    <label>Tipo:</label>
+                    <select id="searchType">
+                        <option value="">Todos</option>
+                        <option value="virtual">Virtual</option>
+                        <option value="físico">Físico</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn" onclick="searchDocuments()">🔍 Buscar</button>
+            <button class="btn btn-secondary" onclick="clearSearch()">🗑️ Limpiar</button>
+            
+            <div id="searchResults" class="document-grid"></div>
+        </div>
+
+        <!-- Pantalla de Devoluciones -->
+        <div id="returnScreen" class="screen">
+            <h2>📤 Devolución de Documentos</h2>
+            <div style="max-width: 400px; margin: 0 auto;">
+                <div class="form-group">
+                    <label for="returnCode">Código del Documento:</label>
+                    <input type="text" id="returnCode" placeholder="Ej: DOC-001">
+                </div>
+                <button class="btn" onclick="returnDocument()">📤 Devolver</button>
+            </div>
+            
+            <div id="returnAlert"></div>
+        </div>
+
+        <!-- Pantalla de Administración -->
+        <div id="adminScreen" class="screen">
+            <h2>⚙️ Panel de Administración</h2>
+            <div style="margin-bottom: 30px;">
+                <button class="btn" onclick="showTransactions()">📊 Ver Transacciones</button>
+                <button class="btn btn-secondary" onclick="exportOutdated()">📋 Exportar Desactualizados</button>
+            </div>
+            
+            <div id="adminContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalle -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div id="modalContent"></div>
+            <button class="btn btn-danger" onclick="closeModal()" style="margin-top: 20px;">❌ Cerrar</button>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>

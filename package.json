@@ -1,0 +1,18 @@
+{
+  "name": "biblioteca-virtual",
+  "version": "1.0.0",
+  "description": "Proyecto de biblioteca virtual que incluye gestión de documentos físicos y virtuales.",
+  "main": "src/scripts/app.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "tsc"
+  },
+  "author": "Tu Nombre",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}
